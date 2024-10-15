@@ -1,0 +1,10 @@
+node_modules
+
+
+documentation
+
+
+.env
+
+
+package-lock*

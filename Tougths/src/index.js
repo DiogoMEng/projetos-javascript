@@ -12,6 +12,12 @@ const conn = require('./db/conn.js');
 const Tougth = require('./models/Tougth.js');
 const User = require('./models/User.js');
 
+// # CONTROLLERS #
+const ToughtController = require('./controllers/ToughtController.js');
+
+// # ROUTES #
+const toughtsRouter = require('./routes/toughtsRouter.js');
+
 const app = express();
 
 app.engine("handlebars", exphbs.engine());
@@ -44,9 +50,12 @@ app.use((req, res, next) => {
   }
 
 });
+app.use("/toughts", toughtsRouter);
+app.use("/", ToughtController.showToughts);
+
 
 conn.sync()
   .then(() => {
-    app.listen(3001, () => 'http://localhost:3001')
+    app.listen(3001, () => console.log('http://localhost:3001'))
   })
   .catch(err => console.log(err));

@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const flash = require('express-flash');
+const path = require('path');
 
 // # CONEXÃO #
 const conn = require('./db/conn.js');
@@ -22,8 +23,11 @@ const app = express();
 
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname + "/views"));
 
-app.use(express.static('public'));
+console.log(__dirname);
+
+app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(session({
@@ -49,9 +53,12 @@ app.use((req, res, next) => {
     res.locals.session = req.session;
   }
 
+  next();
+
 });
+
 app.use("/toughts", toughtsRouter);
-app.use("/", ToughtController.showToughts);
+app.get("/", ToughtController.showToughts);
 
 
 conn.sync()

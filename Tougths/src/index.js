@@ -25,7 +25,7 @@ app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname + "/views"));
 
-console.log(__dirname);
+console.log(path.resolve(__dirname, "./public"))
 
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.urlencoded({ extended: true }));

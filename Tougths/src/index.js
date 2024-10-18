@@ -18,14 +18,13 @@ const ToughtController = require('./controllers/ToughtController.js');
 
 // # ROUTES #
 const toughtsRouter = require('./routes/toughtsRouter.js');
+const authRouter = require('./routes/authRouter.js');
 
 const app = express();
 
 app.engine("handlebars", exphbs.engine());
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname + "/views"));
-
-console.log(path.resolve(__dirname, "./public"))
 
 app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.urlencoded({ extended: true }));
@@ -58,6 +57,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/toughts", toughtsRouter);
+app.use("/", authRouter);
 app.get("/", ToughtController.showToughts);
 
 

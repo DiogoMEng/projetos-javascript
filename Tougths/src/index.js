@@ -55,9 +55,9 @@ app.use((req, res, next) => {
   next();
 
 });
-
 app.use("/toughts", toughtsRouter);
 app.use("/", authRouter);
+
 app.get("/", ToughtController.showToughts);
 
 

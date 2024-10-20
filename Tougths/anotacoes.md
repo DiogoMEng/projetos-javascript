@@ -110,6 +110,10 @@ Exemplo: apresentação mensagem no front.
 
 # Criptografia
 
-`salt  = bcrypt.genSaltSync(10)`: útil para deixar as senhas de usuários mais seguras.
+`bcrypt.genSaltSync(10)`: útil para deixar as senhas de usuários mais seguras.
 
-`hashedPassword = bcrypt.hashSync(password_user, salt)`: gera a senha criptografada.
+`bcrypt.hashSync(password_user, salt)`: gera a senha criptografada.
+
+`bcrypt.compareSync(password, user.password)` - valida a senha do login com a senha que foi registrada
+na base de dados.
+- retorna um valor booleano.

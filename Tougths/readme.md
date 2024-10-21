@@ -1,26 +1,58 @@
 # TOUGTHS
 
-O projeto desenvolvido duranto o cursor da <a href="https://www.udemy.com/">Udemy</a> busca 
+O projeto desenvolvido duranto o cursor da <a href="https://www.udemy.com/">Udemy</a> busca
 apresentar um blog onde usuários podem compartilhar seus pensamentos. A criação do projeto buscou aplicar os conceitos abordados durante o curso de NodeJS e as principais ferramentes
 utilizadas em aplicações reais.
 
 # 📚 Índice
 
-- <a href="#descricao">📖 Descrição</a>
+- <a href="#️-tecnologias">🛠️ Tecnologias</a>
+- <a href="#-endpoints">🔗 Endpoints</a>
 - <a href="#-funcionalidades">✨ Funcionalidades</a>
+- <a href="#pre-visualizacao-aplicacao">🖼️ Pré-visualização da Aplicação</a>
 - <a href="#️-requisitos">⚙️ Requisitos</a>
 - <a href="#-instalacao">📦 Instalação</a>
 - <a href="#-configuracao">🔧 Configuração</a>
-- <a href="#-uso">🚀 Uso</a>
-- <a href="#-endpoints">🔗 Endpoints</a>
-- <a href="#️-tecnologias">🛠️ Tecnologias</a>
+- <a href="#como-executar-o-projeto">🛠️ Como Executar o Projeto</a>
 - <a href="#-licenca">📄 Licença</a>
 
 ---
 
-# <p id="descricao">📖 Descrição</p>
+# <p id="tecnologias">🛠️ Tecnologias</p>
 
-Este é um backend de API RESTful para um blog de pensamentos, onde os usuários podem criar, editar e compartilhar suas ideias. A API oferece autenticação via JWT e endpoints seguros para gerenciamento de conteúdo.
+O projeto utiliza as seguintes bibliotecas e ferramentas:
+
+- bcryptjs 🔒 - Hashing de senhas para segurança de usuários.
+- connect-flash ⚡ - Exibição de mensagens temporárias entre requisições.
+- cookie-parser 🍪 - Middleware para manipulação de cookies.
+- cookie-session 🍪 - Armazenamento de sessões baseadas em cookies.
+- express 🚀 - Framework web minimalista para Node.js.
+- express-flash ✨ - Exibir mensagens flash usando o Express.
+- express-session 🛠️ - Gerenciamento de sessões de usuários.
+- mysql2 🐬 - Cliente MySQL para Node.js.
+- nodemon 🔁 - Ferramenta de desenvolvimento que reinicia automaticamente o servidor.
+- sequelize 🗄️ - ORM para manipulação de banco de dados SQL.
+- session-file-store 📁 - Armazenamento de sessões em arquivos.
+
+---
+
+# <p id="endpoints">🔗 Endpoints</p>
+
+🧑‍💻 Autenticação
+
+- `POST /api/login`: Realiza login do usuário.
+- `POST /api/signup`: Cria uma nova conta de usuário.
+
+📝 Pensamentos
+
+- `GET /api/thoughts`: Retorna todos os pensamentos.
+- `POST /api/thoughts`: Cria um novo pensamento.
+- `PUT /api/thoughts/:id`: Atualiza um pensamento existente.
+- `DELETE /api/thoughts/:id`: Exclui um pensamento.
+
+💬 Comentários
+
+- `POST /api/thoughts/:id/comments`: Adiciona um comentário a um pensamento.
 
 ---
 
@@ -30,6 +62,10 @@ Este é um backend de API RESTful para um blog de pensamentos, onde os usuários
 - 📝 CRUD de pensamentos (criar, visualizar, atualizar e deletar)
 - 💬 Comentários em pensamentos
 - 🔍 Filtros e paginação para busca de pensamentos
+
+---
+
+# <p id="pre-visualizacao-aplicacao">🖼️ Pré-visualização da Aplicação</p>
 
 ---
 
@@ -73,7 +109,7 @@ JWT_SECRET=sua_chave_secreta
 
 ---
 
-# <p id="uso">🚀 Uso</p>
+# <p id="como-executar-o-projeto">🛠️ Como Executar o Projeto</p>
 
 Após instalar as dependências e configurar o ambiente, execute o projeto com o comando:
 
@@ -83,41 +119,6 @@ npm start
 ```
 
 O servidor estará disponível em http://localhost:3000.
-
----
-
-# <p id="endpoints">🔗 Endpoints</p>
-
-🧑‍💻 Autenticação
-- `POST /api/login`: Realiza login do usuário.
-- `POST /api/signup`: Cria uma nova conta de usuário.
-
-📝 Pensamentos
-- `GET /api/thoughts`: Retorna todos os pensamentos.
-- `POST /api/thoughts`: Cria um novo pensamento.
-- `PUT /api/thoughts/:id`: Atualiza um pensamento existente.
-- `DELETE /api/thoughts/:id`: Exclui um pensamento.
-
-💬 Comentários
-- `POST /api/thoughts/:id/comments`: Adiciona um comentário a um pensamento.
-
----
-
-# <p id="tecnologias">🛠️ Tecnologias</p>
-
-O projeto utiliza as seguintes bibliotecas e ferramentas:
-
-- bcryptjs 🔒 - Hashing de senhas para segurança de usuários.
-- connect-flash ⚡ - Exibição de mensagens temporárias entre requisições.
-- cookie-parser 🍪 - Middleware para manipulação de cookies.
-- cookie-session 🍪 - Armazenamento de sessões baseadas em cookies.
-- express 🚀 - Framework web minimalista para Node.js.
-- express-flash ✨ - Exibir mensagens flash usando o Express.
-- express-session 🛠️ - Gerenciamento de sessões de usuários.
-- mysql2 🐬 - Cliente MySQL para Node.js.
-- nodemon 🔁 - Ferramenta de desenvolvimento que reinicia automaticamente o servidor.
-- sequelize 🗄️ - ORM para manipulação de banco de dados SQL.
-- session-file-store 📁 - Armazenamento de sessões em arquivos.
 
 ---
 

@@ -27,7 +27,7 @@ module.exports = class ToughController {
 
     console.log(toughts);
  
-    res.render('toughts/dashboard');
+    res.render('toughts/dashboard', { toughts });
 
   }
 

@@ -25,9 +25,13 @@ module.exports = class ToughController {
 
     const toughts = user.Toughts.map((result) => result.dataValues);
 
-    console.log(toughts);
+    let emptyToughts = true;
+
+    if (toughts.length > 0) {
+      let emptyToughts = false;
+    }
  
-    res.render('toughts/dashboard', { toughts });
+    res.render('toughts/dashboard', { toughts, emptyToughts });
 
   }
 
@@ -55,6 +59,37 @@ module.exports = class ToughController {
     } catch (error) {
       console.log(error);
     }
+
+  }
+
+  static async removeTought(req, res) {
+
+    const id = req.body.id;
+    const UserId = req.session.userid;
+
+    try {
+      await Tought.destroy({ where: { id: id, UserId: UserId } })
+
+      req.flash('message', 'Pensamento removido com sucesso!');
+
+      req.session.save(() => {
+        res.redirect('/toughts/dashboard');
+      });
+    } catch(error) {
+      console.log(error);
+    }
+
+  }
+
+  static async updateTought (req, res) {
+
+    const id = req.params.id;
+
+    const tought = await Tought.findOne({ where: {
+      id: id
+    } });
+
+    res.render('/toughts/edit', { tought });
 
   }
 

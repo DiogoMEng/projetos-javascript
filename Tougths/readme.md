@@ -33,6 +33,17 @@ Este é um backend de API RESTful para um blog de pensamentos, onde os usuários
 
 ---
 
+# <p id="pre-visualizacao-aplicacao">🖼️ Pré-visualização da Aplicação</p>
+
+Tela inicial:
+![alt text](img/pv1.png)
+
+Tela de Registro:
+![alt text](img/pv2.png)
+
+Tele da Dashboard:
+![alt text](image.png)
+
 # <p id="requisitos">⚙️ Requisitos</p>
 
 Para executar este projeto, você precisará de:

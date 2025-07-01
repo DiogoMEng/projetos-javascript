@@ -184,6 +184,8 @@ module.exports = class UserController {
       return;
     }
 
+    user.name = name;
+
     if (!email) {
       res.status(422).json({ message: "O email é obrigatório" });
       return;
@@ -197,24 +199,42 @@ module.exports = class UserController {
       return;
     }
 
-    if (!password) {
-      res.status(422).json({ message: "A senha é obrigatório" });
-      return;
-    }
+    user.email = email;
 
-    if (!confirmPassword) {
-      res.status(422).json({ message: "A confirmação de senha é obrigatório" });
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      res.status(422).json({ message: "As senhas precisam ser iguais" });
-      return;
-    }
-
+    
     if (!phone) {
       res.status(422).json({ message: "O telefone é obrigatório" });
       return;
+    }
+    
+    user.phone = phone;
+    
+    if (password !== confirmPassword) {
+      res.status(422).json({ message: "As senhas precisam ser iguais" });
+      return;
+    } else if (password === confirmPassword && password != null) {
+      /**
+       * CREATE PASSWORD 
+       */
+      const salt = await bcrypt.genSalt(12);
+      const passwordHash = await bcrypt.hash(password, salt);
+
+      user.password = passwordHash;
+    }
+
+    try {
+      /**
+       *  RETURNS USER UPDATED DATA 
+       */
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $set: user },
+        { new: true }
+      )
+
+      res.status(200).json({ message: "Usuário atualizado com sucesso" });
+    } catch (err) {
+      res.status(500).json({ message: err })
     }
 
   }

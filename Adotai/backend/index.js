@@ -24,6 +24,6 @@ app.use(express.static("public"));
  */
 app.use("/users", UserRoutes);
 
-app.listen(5000, () => {
-  console.log("http://localhost:5000");
+app.listen(3001, () => {
+  console.log("http://localhost:3001");
 });

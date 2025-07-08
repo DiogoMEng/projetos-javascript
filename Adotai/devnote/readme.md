@@ -11,6 +11,8 @@ PARTE 3: <a href="#helpers" style="font-weight: bold">Helpers</a>
 
 - <a href="#image-upload">Image Upload</a>
 
+PARTE 4: <a href="#pet-controller" style="font-weight: bold">Pet Controller</a>
+- <a href="#get-all">Get All</a>
 ---
 
 # <p id="estrutura-projeto">Estrutura do Projeto</p>
@@ -72,11 +74,14 @@ PARTE 3: <a href="#helpers" style="font-weight: bold">Helpers</a>
 ## <p id="image-upload">Image Upload</p>
 
 ```javascript
+/**
+ *  CONFIGURAÇÃO MULTER 
+ */
 const imageStorage = multer.diskStorage({
   destination: function(req, file, cb) {
 
     let folder = "";
-
+    
     if(req.baseUrl.includes("users")) {
       folder = "users";
     } else if (req.baseUrl.includes("pets")) {
@@ -92,6 +97,41 @@ const imageStorage = multer.diskStorage({
 
   }
 });
+
+/**
+ *  UPLOAD DE IMAGEM 
+ */
+const imageUpload = multer({
+  storage: imageStorage,
+  fileFilter(req, file, cb) {
+    if(!file.originalname.match(/\.(png|jpg)$/)) {
+      return cb(new Error("Por favor, envie apenas jpg ou png!"));
+    }
+    cb(undefined, true);
+  }
+});
+```
+
+_Nota: o multer irá pegar a pasta que vem pela requisição, e envia para uma pasta._
+
+<a href="#sumario">--SUMÁRIO--</a>
+
+---
+
+# <p id="pet-controller">Pet Controller</p>
+
+## <p id="get-all">Get All</p>
+
+```javascript
+static async getAll(req, res) {
+
+  /**
+   *  RETORNA OS DADOS EM ORDEM CRESCENTE
+   *  - Mais novo --> Mais Velho 
+   */
+  const pets = await Pet.find().sort("-createdAt")
+
+}
 ```
 
 <a href="#sumario">--SUMÁRIO--</a>

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const UserRoutes = require("./routes/user.route.js");
+const PetRoutes = require("./routes/pets.route.js");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.static("public"));
  * ROUTES 
  */
 app.use("/users", UserRoutes);
+app.use("/pets", PetRoutes);
 
 app.listen(3001, () => {
   console.log("http://localhost:3001");

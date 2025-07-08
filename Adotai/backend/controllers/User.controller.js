@@ -167,14 +167,17 @@ module.exports = class UserController {
       confirmPassword,
       phone
     } = req.body;
-    let image = "";
-
+    
     /**
      * CHECK IF USER EXISTS 
-     */
-    const token = getToken(req);
-    const user = await getUserByToken(token);
-    const userExists = await User.findOne({ email });
+    */
+   const token = getToken(req);
+   const user = await getUserByToken(token);
+   const userExists = await User.findOne({ email });
+   
+   if(req.file) {
+     user.image = req.file.filename;
+   }
 
     /**
      *  VALIDATIONS 

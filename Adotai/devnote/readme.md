@@ -12,7 +12,13 @@ PARTE 3: <a href="#helpers" style="font-weight: bold">Helpers</a>
 - <a href="#image-upload">Image Upload</a>
 
 PARTE 4: <a href="#pet-controller" style="font-weight: bold">Pet Controller</a>
+
 - <a href="#get-all">Get All</a>
+
+INFORMAÇÕES EXTRAS: <a href="#problemas-desenvolvimento" style="font-weight: bold">Solução Problemas ao Desenvolver</a>
+
+- <a href="#porta-nao-responde">Porta não Responde</a>
+
 ---
 
 # <p id="estrutura-projeto">Estrutura do Projeto</p>
@@ -135,3 +141,22 @@ static async getAll(req, res) {
 ```
 
 <a href="#sumario">--SUMÁRIO--</a>
+
+---
+
+# <p id="problemas-desenvolvimento">Solução Problemas ao Desenvolver</p>
+
+## <p id="porta-nao-responde">Porta não Responde</p>
+
+```bash
+# ctrl+alt+t --> Abrir terminal
+
+# --> mostra tudo que esta rodando na porta
+sudo lsof -i :3001
+
+#RETORNA
+# node    PID  <user>   21u  IPv6  ...  TCP *:3001 (LISTEN)
+
+# --> Finaliza qualquer processo na porta
+sudo kill -9 PID
+```

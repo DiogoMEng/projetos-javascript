@@ -140,6 +140,16 @@ static async getAll(req, res) {
 }
 ```
 
+```javascript
+  /**
+   *  MÉTODO DE VERIFICAR SE OS VALORES SÃO IGUAIS 
+   */
+  if(pet.user._id.equals(user._id)) {
+    res.status(422).json({ message: "Houve um problema em processar a sua solicitação, tente novamente mais tarde" });
+    return;
+  }
+```
+
 <a href="#sumario">--SUMÁRIO--</a>
 
 ---
@@ -160,3 +170,5 @@ sudo lsof -i :3001
 # --> Finaliza qualquer processo na porta
 sudo kill -9 PID
 ```
+
+<a href="#sumario">--SUMÁRIO--</a>

@@ -1,6 +1,8 @@
+import styles from "./Footer.module.css"
+
 function Footer() {
   return (
-    <footer>
+    <footer className={styles.footer}>
       <p>
         <span className="bold">Adotaí</span> &copy; 2025
       </p>

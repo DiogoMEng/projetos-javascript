@@ -5,11 +5,11 @@ import Logo from "../../assets/img/logo.png"
 function Navbar() {
   return (
     <nav className={styles.navbar}>
+      <div className={styles.navbar_logo}>
+        <img src={Logo} alt="Adotaí"></img>
+        <h2>Adotaí</h2>
+      </div>
       <ul>
-        <div className={styles.navbar_logo}>
-          <img src={Logo} alt="Adotaí"></img>
-          <h2>Adotaí</h2>
-        </div>
         <li>
           <Link to="/">Adotar</Link>
         </li>

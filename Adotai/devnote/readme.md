@@ -1,27 +1,29 @@
 # <p id="sumario">SUMÁRIO</p>
 
-PARTE 1: <a href="#estrutura-projeto" style="font-weight: bold">Estrutura do Projeto</a>
+PARTE 1: <a href="#backend" style="font-weight: bold">Back-End do Projeto</a>
 
-PARTE 2: <a href="#user-controller" style="font-weight: bold">User Controller</a>
+- <a href="#estrutura-projeto" style="font-weight: bold">Estrutura do Projeto</a>
+- <a href="#user-controller" style="font-weight: bold">User Controller</a>
+  1. <a href="#resgate-user-id">Resgatando usuário por ID</a>
+  2. <a href="#atualiza-user-id">Atualizando usuário por ID</a>
+- <a href="#helpers" style="font-weight: bold">Helpers</a>
+  1. <a href="#image-upload">Image Upload</a>
+- <a href="#pet-controller" style="font-weight: bold">Pet Controller</a>
+  1. <a href="#get-all">Get All</a>
 
-- <a href="#resgate-user-id">Resgatando usuário por ID</a>
-- <a href="#atualiza-user-id">Atualizando usuário por ID</a>
+PARTE 2: <a href="#frontent" style="font-weight: bold">Front-End do Projeto</a>
 
-PARTE 3: <a href="#helpers" style="font-weight: bold">Helpers</a>
+PARTE 3: <a href="#problemas-desenvolvimento" style="font-weight: bold">Solução Problemas ao Desenvolver</a>
 
-- <a href="#image-upload">Image Upload</a>
+- <a href="#porta-nao-responde" style="font-weight: bold">Porta não Responde</a>
 
-PARTE 4: <a href="#pet-controller" style="font-weight: bold">Pet Controller</a>
 
-- <a href="#get-all">Get All</a>
-
-INFORMAÇÕES EXTRAS: <a href="#problemas-desenvolvimento" style="font-weight: bold">Solução Problemas ao Desenvolver</a>
-
-- <a href="#porta-nao-responde">Porta não Responde</a>
 
 ---
 
-# <p id="estrutura-projeto">Estrutura do Projeto</p>
+# <p id="backend">Back-End do Projeto</p>
+
+## <p id="estrutura-projeto">Estrutura do Projeto</p>
 
 |                    |                                                                                                                            |
 |--------------------|----------------------------------------------------------------------------------------------------------------------------|
@@ -37,9 +39,9 @@ INFORMAÇÕES EXTRAS: <a href="#problemas-desenvolvimento" style="font-weight: b
 
 ---
 
-# <p id="user-controller">User Controller</p>
+## <p id="user-controller">User Controller</p>
 
-## <p id="resgate-user-id">Resgatando usuário por ID</p>
+### <p id="resgate-user-id">Resgatando usuário por ID</p>
 
 ```javascript
   static async getUserById(req, res) {
@@ -61,7 +63,7 @@ INFORMAÇÕES EXTRAS: <a href="#problemas-desenvolvimento" style="font-weight: b
   }
 ```
 
-## <p id="atualiza-user-id">Atualizando usuário por ID</p>
+### <p id="atualiza-user-id">Atualizando usuário por ID</p>
 
 ```javascript
       const updatedUser = await User.findOneAndUpdate(
@@ -75,9 +77,9 @@ INFORMAÇÕES EXTRAS: <a href="#problemas-desenvolvimento" style="font-weight: b
 
 ---
 
-# <p id="helpers">Helpers</p>
+## <p id="helpers">Helpers</p>
 
-## <p id="image-upload">Image Upload</p>
+### <p id="image-upload">Image Upload</p>
 
 ```javascript
 /**
@@ -124,9 +126,9 @@ _Nota: o multer irá pegar a pasta que vem pela requisição, e envia para uma p
 
 ---
 
-# <p id="pet-controller">Pet Controller</p>
+## <p id="pet-controller">Pet Controller</p>
 
-## <p id="get-all">Get All</p>
+### <p id="get-all">Get All</p>
 
 ```javascript
 static async getAll(req, res) {
@@ -148,6 +150,45 @@ static async getAll(req, res) {
     res.status(422).json({ message: "Houve um problema em processar a sua solicitação, tente novamente mais tarde" });
     return;
   }
+```
+
+<a href="#sumario">--SUMÁRIO--</a>
+
+---
+
+# <p id="frontent">Front-End do Projeto</p>
+
+```bash
+# INICIA A APLICAÇÃO
+npx create-react-app
+```
+
+## <p id="formulário">Formulários</p>
+
+```javascript
+/**
+ *  RECEBE INPUT DE FORMA DINÂMICA 
+ */
+function Input ({type, text, name, placeholder, handleOnChange, value, multiple}) {
+  return (
+    <div>
+      <label htmlFor={name}>{text}:</label>
+      <input 
+        type={type} 
+        name={name} 
+        id={name} 
+        placeholder={placeholder} 
+        onChange={handleOnChange} 
+        value={value}
+        /**
+         *  RECEBE UM OU MAIS ARQUIVOS DE IMAGEM
+         * --> Verifica a quantidade de arquivos enviados 
+         */
+        {...(multiple ? {multiple} : "")}
+      ></input>
+    </div>
+  )
+}
 ```
 
 <a href="#sumario">--SUMÁRIO--</a>

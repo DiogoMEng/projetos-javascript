@@ -191,6 +191,48 @@ function Input ({type, text, name, placeholder, handleOnChange, value, multiple}
 }
 ```
 
+```javascript
+  function setFlashMessage(msg, type) {
+    /**
+     *  CAPTO O EVENTO FLASH PARA PODER EXIBIR A MENSAGEM 
+     */
+    bus.emit("flash", {
+      message: msg,
+      type: type
+    });
+
+  }
+```
+
+**`useEffect`** - permite observar o evento apenas uma vez quando o componente é renderizado.
+
+```javascript
+/**
+ *  AO ENVIAR UMA REQUISIÇÃO COM A API, O USUÁRIO PODERÁ SER AUTENTICADO 
+ */
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if(token){
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+      setAuthenticated(true);
+    }
+  }, [])
+
+/**
+ *  PERMITE QUE O USUÁRIO ESTEJA AUTENTICADO NA APLICAÇÃO 
+ */
+  async function authUser(data) {
+
+    setAuthenticated(true);
+
+    localStorage.setItem("token", JSON.stringify(data.token));
+
+    history.push("/");
+
+  }
+```
+
 <a href="#sumario">--SUMÁRIO--</a>
 
 ---

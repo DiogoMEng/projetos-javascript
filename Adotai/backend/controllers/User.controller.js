@@ -50,11 +50,6 @@ module.exports = class UserController {
       return;
     }
 
-    if (!image) {
-      res.status(422).json({ message: "A imagem é obrigatório" });
-      return;
-    }
-
 
     /**
      * CHECK IF USER EXISTS 

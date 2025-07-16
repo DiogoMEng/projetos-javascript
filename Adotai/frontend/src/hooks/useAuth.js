@@ -42,6 +42,26 @@ export default function useAuth () {
 
   }
 
+  async function login (user) {
+
+    let msgText = "Login realizado com sucesso";
+    let msgType = "success";
+
+    try {
+      const data = await api.post("/users/login", user).then(res => {
+        return res.data
+      });
+
+      await authUser(data);
+    } catch (err) {
+      msgText = err.response.data.message;
+      msgType = "error";
+    }
+
+    setFlashMessage(msgText, msgType);
+
+  }
+
   async function authUser(data) {
 
     setAuthenticated(true);
@@ -51,7 +71,7 @@ export default function useAuth () {
     history.push("/");
 
   }
-
+  
   function logout () {
 
     const msgText = "Logout realizado com sucesso!";
@@ -69,7 +89,8 @@ export default function useAuth () {
   return {
     authenticated,
     register,
-    logout
+    logout,
+    login
   }
 
 }

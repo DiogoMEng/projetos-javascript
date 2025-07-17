@@ -9,7 +9,7 @@ function MyPets() {
     <section>
       <div>
         <h1>MyPets</h1>
-        <Link to="/pet/add"></Link>
+        <Link to="/pet/add">Cadastrar Pet</Link>
       </div>
       <div>
         {pets.length > 0 && (

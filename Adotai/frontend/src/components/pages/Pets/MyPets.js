@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 function MyPets() {
 
-  const [pets, setPets] = useState([])
+  const [pets, setPets] = useState([]);
 
   return (
     <section>

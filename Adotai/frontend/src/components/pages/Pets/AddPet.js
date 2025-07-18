@@ -21,37 +21,39 @@ function AddPet() {
   const history = useHistory();
 
   async function registerPet(pet) {
+
     let msgType = "success";
 
     const formData = new FormData();
 
+    console.log(Object.keys(pet));
+
     await Object.keys(pet).forEach((key) => {
       if (key === "images") {
-        pet[key].forEach((image) => {
-          formData.append("images", image);
-        });
+        for (let i = 0; i < pet[key].length; i++) {
+          formData.append("images", pet[key][i]);  
+        }
       } else {
-        formData.append(key, pet[key]);
+        formData.append(key, pet[key])
       }
     });
 
-    const data = await api.post("/pets/create", formData, {
-      headers: {
-        Authorization: `Bearer ${JSON.parse(token)}`,
-        "Content-Type": "multipart/form-data",
-      }
+    const data = await api.post("pets/create", formData, {
+      Authorization: `Bearer ${JSON.parse(token)}`,
+      "Content-Type": "multipart/form-data",
     })
-    .then((res) => {
-      return res.data
+    .then(res => {
+      console.log(res.data);
+      return res.data;
     })
-    .catch((err) => {
+    .catch(err => {
       msgType = "error";
       return err.response.data;
     });
 
     setFlashMessage(data.message, msgType);
 
-    if (msgType !== "error") {
+    if(msgType !== "error") {
       history.push("/pets/mypets");
     }
 

@@ -13,7 +13,7 @@ function PetForm({ handleSubmit ,petData, btnText }) {
 
   function onFileChange(event) {
     setPreview(Array.from(event.target.files));
-    setPet({  ...pet, images: [event.target.files] });
+    setPet({  ...pet, images: [...event.target.files] });
   }
 
   function handleChange(event) {

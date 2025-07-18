@@ -21,9 +21,7 @@ module.exports = class PetController {
     const images = req.files;
     const available = true;
 
-    /**
-     *  IMAGES UPLOAD 
-     */
+    console.log("Imagens no Backend", req.files)
 
     /**
      *  VALIDATION 

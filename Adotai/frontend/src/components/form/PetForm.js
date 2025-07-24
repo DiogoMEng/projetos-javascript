@@ -44,8 +44,8 @@ function PetForm({ handleSubmit ,petData, btnText }) {
           pet.images &&
           pet.images.map((image, index) => (
             <img 
-              key={`${process.env.REACT_APP_API}/images/pets/${image}`}
-              src={URL.createObjectURL(image)}
+              key={`${pet.name}+${index}`}
+              src={`${process.env.REACT_APP_API}/images/pets/${image}`}
               alt={pet.name}
               className={formStyles.preview_image}
             />

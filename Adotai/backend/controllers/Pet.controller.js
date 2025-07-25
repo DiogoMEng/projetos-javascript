@@ -21,9 +21,7 @@ module.exports = class PetController {
     const images = req.files;
     const available = true;
 
-    /**
-     *  IMAGES UPLOAD 
-     */
+    console.log("Imagens no Backend", req.files)
 
     /**
      *  VALIDATION 
@@ -249,10 +247,7 @@ module.exports = class PetController {
       updatedData.color = color;
     }
 
-    if(images.length === 0) {
-      res.status(422).json({ message: "A imagem é obrigatória!" });
-      return;
-    } else {
+    if(images.length > 0) {
       updatedData.images = [];
       images.map((image) => {
         updatedData.images.push(image.filename);
